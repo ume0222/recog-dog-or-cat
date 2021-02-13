@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>犬猫認識</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h3>認識したい画像を選択して、「送信」ボタンを押してね！</h3>
+		<form th:action="@{result}" method="post" enctype="multipart/form-data" accept="image/jpeg,image/png">
+			<input type="file" name="uploadFile" />
+			<input type="submit" value="送信">
+		</form>
+	</body>
+</html>

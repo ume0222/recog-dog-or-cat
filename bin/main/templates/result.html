@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>認識結果</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h2>認識結果</h2>
+		<table>
+			<tr th:each="lbl : ${result.labels}" th:object="${lbl}">
+				<td><span th:text="*{label}"></span>の確率は<span th:text="*{score * 100}"></span>%</td>
+			</tr>
+		</table>
+	</body>
+</html>
