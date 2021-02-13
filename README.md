@@ -1,7 +1,7 @@
 # 使い方
 1. Gradleプロジェクトとしてインポート
-2. https://aimaker.io/にアクセスして、twitter連携をする
-3. https://aimaker.io/app/image-classification/id/5962に行き、ページの下のほうの「APIを使う！」でAPIキーを確認する
+2. [https://aimaker.io/]()にアクセスして、twitter連携をする
+3. [https://aimaker.io/app/image-classification/id/5962]()に行き、ページの下のほうの「APIを使う！」でAPIキーを確認する
 4. src/main/resources内にaimaker.propertiesを作成し、以下の2行を追加  
 aimaker.id=5962  
 aimaker.apikey=確認したAPIキー

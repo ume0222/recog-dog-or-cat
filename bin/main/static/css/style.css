@@ -1,0 +1,28 @@
+/* ボディ */
+body {
+    display: grid; /* grid layoutにする */
+    min-height: 100vh; /* 高さの最小値を画面サイズと同じにすることで、要素が詰めて表示されないようにする */
+    grid-template-rows: 100px 1fr 100px; /* ヘッダー・フッターの高さは100px, それ以外は余った大きさ */
+    grid-template-columns: 1fr;
+}
+
+/* ヘッダー */
+header {
+    grid-row: 1; /* ヘッダーは1行目 */
+    background-color: #f8e352;
+}
+
+/* メインコンテンツ */
+main {
+    width: 900px;
+    margin-right: auto; /* 中央に配置 */
+    margin-left: auto;  /* 中央に配置 */
+    grid-row: 2; /* メインコンテンツは2行目 */
+    margin-top: 10px; /* 上部は少し空ける */
+}
+
+/* フッター */
+footer {
+    grid-row: 3; /* フッターは3行目 */
+    background-color: #f8e352;
+}
