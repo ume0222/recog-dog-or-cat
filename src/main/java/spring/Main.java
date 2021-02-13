@@ -10,5 +10,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 class Main {
 	public static void main(String[] args) {
 	}
-
 }

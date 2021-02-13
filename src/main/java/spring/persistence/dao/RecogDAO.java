@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 @Repository
-
 public class RecogDAO {
 
 	private final RestTemplate template;

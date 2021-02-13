@@ -12,5 +12,15 @@
 				<td><span th:text="*{label}"></span>の確率は<span th:text="*{score * 100}"></span>%</td>
 			</tr>
 		</table>
+
+		<table border='1'>
+			<tr th:each="history : ${histories}" th:object="${history}">
+				<td th:text="*{id}"></td>
+				<td><img th:src="*{imgStr}"/></td>
+				<td th:text="*{recogDate}"></td>
+				<td th:text="*{resultDog}"></td>
+				<td th:text="*{resultCat}"></td>
+			</tr>
+		</table>
 	</body>
 </html>

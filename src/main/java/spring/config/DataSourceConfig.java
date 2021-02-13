@@ -34,7 +34,7 @@ public class DataSourceConfig {
 	public DatabasePopulator databasePopulator(DataSource dataSource) {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScript(new ClassPathResource("schema.sql"));
-		populator.addScript(new ClassPathResource("data.sql"));
+		// populator.addScript(new ClassPathResource("data.sql"));
 		return populator;
 	}
 
