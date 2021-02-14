@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+<title>認識履歴</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>番号</th>
+			<th>画像</th>
+			<th>日付</th>
+			<th>犬の確率</th>
+			<th>猫の確率</th>
+		</tr>
+		<tr th:each="history : ${histories}" th:object="${history}">
+			<td id="hist_id" th:text="*{id}"></td>
+			<td><img th:src="*{imgStr}" /></td>
+			<td th:text="*{recogDate}"></td>
+			<td class="hist_recog" th:text="*{resultDog} + '%'"></td>
+			<td class="hist_recog" th:text="*{resultCat}+ '%'"></td>
+		</tr>
+	</table>
+</body>
+</html>

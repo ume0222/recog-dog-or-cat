@@ -1,10 +1,8 @@
 package spring.persistence.entity;
 
-import java.time.LocalDateTime;
-
 public class History {
 	private int id;
-	private LocalDateTime recogDate;
+	private String recogDate;
 	private byte[] img;
 	private double resultCat;
 	private double resultDog;
@@ -12,7 +10,7 @@ public class History {
 
 	public History() {}
 
-	public History(LocalDateTime recogDate,byte[] img, double resultCat, double resultDog) {
+	public History(String recogDate,byte[] img, double resultCat, double resultDog) {
 		this.recogDate = recogDate;
 		this.img = img;
 		this.resultCat = resultCat;
@@ -27,11 +25,11 @@ public class History {
 		this.id = id;
 	}
 
-	public LocalDateTime getRecogDate() {
+	public String getRecogDate() {
 		return recogDate;
 	}
 
-	public void setRecogDate(LocalDateTime recogDate) {
+	public void setRecogDate(String recogDate) {
 		this.recogDate = recogDate;
 	}
 

@@ -3,10 +3,10 @@
 	<head>
 		<title>犬猫認識</title>
 		<meta charset="UTF-8" />
-		<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/static/css/style.css}">
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/static/css/style.css}"/>
 	</head>
 	<body>
-		<header>ヘッダー</header>
+		<header></header>
 		<main>
 			<h3>認識したい画像を選択して、「送信」ボタンを押してね！</h3>
 			<form th:action="@{result}" method="post" enctype="multipart/form-data" accept="image/jpeg,image/png">
@@ -14,6 +14,6 @@
 				<input type="submit" value="送信">
 			</form>
 		</main>
-		<footer>フッター</footer>
+		<footer></footer>
 	</body>
 </html>

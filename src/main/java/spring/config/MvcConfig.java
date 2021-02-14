@@ -64,10 +64,12 @@ public class MvcConfig implements WebMvcConfigurer{
 	}
 
 	// https://www.baeldung.com/spring-file-upload
+	// https://qiita.com/HiroyaEnd/items/e731e5ce58dae7dbb4cc
+	private static final int MAX_UPLOAD_SIZE = 1024 * 1024; //1MB
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(100000);
+		multipartResolver.setMaxUploadSize(MAX_UPLOAD_SIZE);
 		return multipartResolver;
 	}
 }

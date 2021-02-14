@@ -3,24 +3,18 @@
 	<head>
 		<title>認識結果</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+		<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
 	</head>
 	<body>
 		<h2>認識結果</h2>
 		<table>
 			<tr th:each="lbl : ${result.labels}" th:object="${lbl}">
-				<td><span th:text="*{label}"></span>の確率は<span th:text="*{score * 100}"></span>%</td>
+				<td><span th:text="*{label}"></span>の確率は<span th:text="*{score}"></span>%</td>
 			</tr>
 		</table>
 
-		<table border='1'>
-			<tr th:each="history : ${histories}" th:object="${history}">
-				<td th:text="*{id}"></td>
-				<td><img th:src="*{imgStr}"/></td>
-				<td th:text="*{recogDate}"></td>
-				<td th:text="*{resultDog}"></td>
-				<td th:text="*{resultCat}"></td>
-			</tr>
-		</table>
+		<form action="history.html" th:action="@{history}">
+			<input type="submit" value="認識履歴" />
+		</form>
 	</body>
 </html>
