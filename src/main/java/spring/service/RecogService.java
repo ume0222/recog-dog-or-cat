@@ -86,7 +86,7 @@ public class RecogService {
 
 		// 認識率を取得
 		double resultCat, resultDog;
-		if (labels.get(0).getLabel() == "猫") {
+		if (labels.get(0).getLabel().equals("猫")) {
 			resultCat = labels.get(0).getScore();
 			resultDog = labels.get(1).getScore();
 		} else {
