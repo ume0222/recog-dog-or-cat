@@ -5,6 +5,5 @@
 4. src/main/resources内にaimaker.propertiesを作成し、以下の2行を追加  
 aimaker.id=5962  
 aimaker.apikey=確認したAPIキー
-5. (今は使ってないけどデータベース設定が必要なので)MySQLをインストールし、  
-springデータベースとユーザ(ユーザ名：user, パスワード：password, springデータベースへのアクセス権限を持つ)を作成する
+5. MySQLをインストールし、springデータベースとユーザ(ユーザ名：user, パスワード：password, springデータベースへのアクセス権限を持つ)を作成する
 6. サーバで実行する
