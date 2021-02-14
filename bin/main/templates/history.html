@@ -2,28 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="../static/css/style.css"
+	th:href="@{/css/style.css}" />
 <title>認識履歴</title>
 </head>
 <body>
-	<table>
-		<tr>
-			<th>番号</th>
-			<th>画像</th>
-			<th>日付</th>
-			<th>猫の確率</th>
-			<th>犬の確率</th>
-		</tr>
-		<tr th:each="history : ${histories}" th:object="${history}">
-			<td id="hist_id" th:text="*{id}"></td>
-			<td><img th:src="*{imgStr}" /></td>
-			<td th:text="*{recogDate}"></td>
-			<td class="hist_recog" th:text="*{resultCat} + '%'"></td>
-			<td class="hist_recog" th:text="*{resultDog}+ '%'"></td>
-		</tr>
-	</table>
-	<form action="recog.html" th:action="@{/}">
-		<input type="submit" value="再認識" />
-	</form>
+	<header>
+		<h2>犬猫認識</h2>
+		<ul>
+			<li><a href="recog.html" th:href="@{top}" class="btn4">TOP</a></li>
+			<li><a href="history.html" th:href="@{history}" class="btn4">認識履歴</a></li>
+		</ul>
+	</header>
+	<main>
+		<div class="history">
+			<table class="history_table">
+				<tr>
+					<th>番号</th>
+					<th>画像</th>
+					<th>日時</th>
+					<th>犬の確率</th>
+					<th>猫の確率</th>
+				</tr>
+				<tr th:each="history : ${histories}" th:object="${history}">
+					<td id="hist_id" th:text="*{id}"></td>
+					<td><img th:src="*{imgStr}" /></td>
+					<td th:text="*{recogDate}"></td>
+					<td class="hist_recog" th:text="*{resultDog} + '%'"></td>
+					<td class="hist_recog" th:text="*{resultCat}+ '%'"></td>
+				</tr>
+			</table>
+		</div>
+	</main>
+	<footer>created by ume0222</footer>
 </body>
 </html>

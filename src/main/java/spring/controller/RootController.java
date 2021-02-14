@@ -8,6 +8,11 @@ public class RootController {
 
 	@GetMapping("/")
 	public String root() {
+		return "forward:top";
+	}
+
+	@GetMapping("/top")
+	public String top() {
 		return "recog";
 	}
 }

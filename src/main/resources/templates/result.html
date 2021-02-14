@@ -1,20 +1,26 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>認識結果</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-	</head>
-	<body>
-		<h2>認識結果</h2>
-		<table>
-			<tr th:each="lbl : ${result.labels}" th:object="${lbl}">
-				<td><span th:text="*{label}"></span>の確率は<span th:text="*{score}"></span>%</td>
-			</tr>
-		</table>
-
-		<form action="history.html" th:action="@{history}">
-			<input type="submit" value="認識履歴" />
-		</form>
-	</body>
+<head>
+<title>認識結果</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../static/css/style.css"
+	th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<h2>犬猫認識</h2>
+		<ul>
+			<li><a href="recog.html" th:href="@{top}" class="btn4">TOP</a></li>
+			<li><a href="history.html" th:href="@{history}" class="btn4">認識履歴</a></li>
+		</ul>
+	</header>
+	<main>
+		<div th:each="lbl : ${result.labels}" th:object="${lbl}">
+			<div>
+				<span th:text="*{label}"></span>の確率は<span th:text="*{score}"></span>%
+			</div>
+		</div>
+	</main>
+	<footer>created by ume0222</footer>
+</body>
 </html>
