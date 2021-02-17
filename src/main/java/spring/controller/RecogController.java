@@ -26,6 +26,12 @@ public class RecogController {
 	@PostMapping("/result")
 	public String recog(@RequestParam MultipartFile uploadFile, @Value("${aimaker.id}") String id,
 			@Value("${aimaker.apikey}") String apikey, Model model) {
+
+		// uploadFileがnullの場合
+		if(uploadFile == null) {
+			return "error/error";
+		}
+
 		Result result = recogService.recog(uploadFile, id, apikey);
         model.addAttribute("result", result);
 

@@ -18,8 +18,8 @@
 		<div class="main_center">
 			<h3>認識したい画像を選択して、「送信」ボタンを押してね！</h3>
 			<form th:action="@{result}" method="post"
-				enctype="multipart/form-data" accept="image/jpeg,image/png">
-				<input type="file" name="uploadFile" /> <input type="submit"
+				enctype="multipart/form-data" >
+				<input type="file" name="uploadFile" accept="image/*" required /> <input type="submit"
 					value="送信">
 			</form>
 		</div>
