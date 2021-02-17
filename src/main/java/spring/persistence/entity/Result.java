@@ -53,6 +53,30 @@ public class Result {
         this.state = state;
     }
 
+    /**
+     * 犬と猫のどちらと認識したのか
+     * @return "犬" or "猫"
+     */
+    public String judge() {
+		return (getDogScore() > getCatScore()) ? "犬" : "猫";
+	}
+
+    public double getDogScore() {
+		if (labels.get(0).getLabel().equals("犬")) {
+			return labels.get(0).getScore();
+		} else {
+			return labels.get(1).getScore();
+		}
+	}
+
+	public double getCatScore() {
+		if (labels.get(0).getLabel().equals("猫")) {
+			return labels.get(0).getScore();
+		} else {
+			return labels.get(1).getScore();
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Result [url=" + url + ", labels=" + labels + ", state=" + state + "]";

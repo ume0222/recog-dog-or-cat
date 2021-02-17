@@ -5,9 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -64,9 +62,9 @@ public class RecogService {
 
 		// 認識率をパーセントに変換
 		// 小数点第二位で四捨五入
-		for(Label label : result.getLabels()) {
+		for (Label label : result.getLabels()) {
 			double recogPercent = label.getScore() * 100; // 認識率
-			recogPercent = (recogPercent > 0) ? ((int)Math.round(recogPercent * 10)) / 10.0 : 0;
+			recogPercent = (recogPercent > 0) ? ((int) Math.round(recogPercent * 10)) / 10.0 : 0;
 			label.setScore(recogPercent);
 		}
 
@@ -82,40 +80,27 @@ public class RecogService {
 	 * @param result 認識結果
 	 */
 	private void insertHistory(MultipartFile uploadFile, Result result) {
-		List<Label> labels = result.getLabels();
 
 		// 認識率を取得
-		double resultCat, resultDog;
-		if (labels.get(0).getLabel().equals("猫")) {
-			resultCat = labels.get(0).getScore();
-			resultDog = labels.get(1).getScore();
-		} else {
-			resultDog = labels.get(0).getScore();
-			resultCat = labels.get(1).getScore();
-		}
+		double resultDog = result.getDogScore();
+		double resultCat = result.getCatScore();
 
-		// 今日の日付を取得
-		Date date = new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		String now = df.format(date);
+		// 犬猫どっちと認識したのか
+		String judge = result.judge();
+
+		//		// 今日の日付を取得
+		//		Date date = new Date();
+		//		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		//		String now = df.format(date);
 
 		// 画像を縮小
 		byte[] byteImg = compress(uploadFile);
 
-		// Base64形式にする
-		String base64Str = Base64.getEncoder().encodeToString(byteImg);
-		String contentType = uploadFile.getContentType();
-		StringBuilder sb = new StringBuilder();
-		sb.append("data:");
-		sb.append(contentType);
-		sb.append(";base64,");
-		sb.append(base64Str);
-
-		// バイナリに変換
-		byte[] base64Img = sb.toString().getBytes();
+		// base64形式に変換
+		byte[] base64Img = byte2byteBase64(byteImg, uploadFile.getContentType());
 
 		// データベースに挿入
-		History history = new History(now, base64Img, resultCat, resultDog);
+		History history = new History(base64Img, resultCat, resultDog, judge);
 		recogMapper.insertHistory(history);
 	}
 
@@ -124,7 +109,7 @@ public class RecogService {
 	 * @param file 画像ファイル
 	 * @return バイト列の縮小された画像
 	 */
-	public byte[] compress(MultipartFile file) {
+	private byte[] compress(MultipartFile file) {
 		// 長辺の最大ピクセル数
 		final int MAX_PIXEL_SIZE = 150;
 
@@ -166,6 +151,27 @@ public class RecogService {
 		}
 
 		return bout.toByteArray();
+	}
+
+	/**
+	 * byte配列をbase64形式のbyte配列に変換する
+	 * @param byteImg byte配列の画像
+	 * @param contentType 画像のコンテンツタイプ
+	 * @return base64形式のbyte配列
+	 */
+	private byte[] byte2byteBase64(byte[] byteImg, String contentType) {
+		// Base64形式にする
+		String base64Str = Base64.getEncoder().encodeToString(byteImg);
+		StringBuilder sb = new StringBuilder();
+		sb.append("data:");
+		sb.append(contentType);
+		sb.append(";base64,");
+		sb.append(base64Str);
+
+		// バイナリに変換
+		byte[] base64Img = sb.toString().getBytes();
+
+		return base64Img;
 	}
 
 	/**

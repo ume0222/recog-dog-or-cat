@@ -21,6 +21,7 @@
 					<th>番号</th>
 					<th>画像</th>
 					<th>日時</th>
+					<th>判定</th>
 					<th>犬の確率</th>
 					<th>猫の確率</th>
 				</tr>
@@ -28,8 +29,9 @@
 					<td id="hist_id" th:text="*{id}"></td>
 					<td><img th:src="*{imgStr}" /></td>
 					<td th:text="*{recogDate}"></td>
+					<td th:text="*{judge}"></td>
 					<td class="hist_recog" th:text="*{resultDog} + '%'"></td>
-					<td class="hist_recog" th:text="*{resultCat}+ '%'"></td>
+					<td class="hist_recog" th:text="*{resultCat} + '%'"></td>
 				</tr>
 			</table>
 		</div>

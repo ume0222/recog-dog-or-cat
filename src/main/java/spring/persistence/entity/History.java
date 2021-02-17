@@ -2,19 +2,20 @@ package spring.persistence.entity;
 
 public class History {
 	private int id;
-	private String recogDate;
 	private byte[] img;
+	private String recogDate;
 	private double resultCat;
 	private double resultDog;
 	private String imgStr;
+	private String judge;
 
 	public History() {}
 
-	public History(String recogDate,byte[] img, double resultCat, double resultDog) {
-		this.recogDate = recogDate;
+	public History(byte[] img, double resultCat, double resultDog, String judge) {
 		this.img = img;
 		this.resultCat = resultCat;
 		this.resultDog = resultDog;
+		this.judge = judge;
 	}
 
 	public int getId() {
@@ -25,20 +26,20 @@ public class History {
 		this.id = id;
 	}
 
-	public String getRecogDate() {
-		return recogDate;
-	}
-
-	public void setRecogDate(String recogDate) {
-		this.recogDate = recogDate;
-	}
-
 	public byte[] getImg() {
 		return img;
 	}
 
 	public void setImg(byte[] img) {
 		this.img = img;
+	}
+
+	public String getRecogDate() {
+		return recogDate;
+	}
+
+	public void setRecogDate(String recogDate) {
+		this.recogDate = recogDate;
 	}
 
 	public double getResultCat() {
@@ -63,6 +64,14 @@ public class History {
 
 	public void setImgStr(String imgStr) {
 		this.imgStr = imgStr;
+	}
+
+	public String getJudge() {
+		return judge;
+	}
+
+	public void setJudge(String judge) {
+		this.judge = judge;
 	}
 
 }

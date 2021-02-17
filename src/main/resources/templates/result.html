@@ -15,6 +15,7 @@
 		</ul>
 	</header>
 	<main>
+		<h2>この画像は<span th:text=${result.judge()}></span>です</h2>
 		<div th:each="lbl : ${result.labels}" th:object="${lbl}">
 			<div>
 				<span th:text="*{label}"></span>の確率は<span th:text="*{score}"></span>%

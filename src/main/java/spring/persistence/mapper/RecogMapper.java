@@ -10,13 +10,12 @@ import spring.persistence.entity.History;
 
 public interface RecogMapper {
 
-	@Select("SELECT id, recogDate, img, resultCat, resultDog"
-			+ " FROM history")
+	@Select("SELECT id, recogDate, img, resultCat, resultDog, judge FROM history")
 	List<History> findAll();
 
 
-	@Insert("INSERT INTO history(recogDate, img, resultCat, resultDog)"
-			+ "VALUES(#{recogDate}, #{img}, #{resultCat}, #{resultDog})")
+	@Insert("INSERT INTO history(img, resultCat, resultDog, judge)"
+			+ "VALUES(#{img}, #{resultCat}, #{resultDog}, #{judge})")
 	@Options(useGeneratedKeys=true, keyColumn="id", keyProperty="id")
 	void insertHistory(History history);
 }

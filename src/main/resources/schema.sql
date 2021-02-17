@@ -1,8 +1,9 @@
 CREATE TABLE IF NOT EXISTS history
 (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	recogDate DATETIME,
+	recogDate DATETIME DEFAULT NOW(),
 	img MEDIUMBLOB,
 	resultCat DOUBLE,
-	resultDog DOUBLE
+	resultDog DOUBLE,
+	judge CHAR(2)
 );
