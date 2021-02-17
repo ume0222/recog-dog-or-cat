@@ -10,7 +10,7 @@ import spring.persistence.entity.History;
 
 public interface RecogMapper {
 
-	@Select("SELECT id, recogDate, img, resultCat, resultDog, judge FROM history")
+	@Select("SELECT * FROM history")
 	List<History> findAll();
 
 
